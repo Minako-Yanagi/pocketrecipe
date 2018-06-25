@@ -9,13 +9,9 @@
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-<<<<<<< HEAD
         "laravelcollective/html": "^5.4.0",
         "thomaswelton/laravel-gravatar": "~1.0",
         "rakuten-ws/rws-php-sdk": "1.*"
-=======
-        "laravelcollective/html": "5.5.*"
->>>>>>> editwelcome
     },
     "require-dev": {
         "filp/whoops": "~2.0",

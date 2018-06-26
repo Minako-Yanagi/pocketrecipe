@@ -19,3 +19,13 @@ Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Ranking
+Route::get('ranking/made', 'RankingController@made')->name('ranking.made');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('items', 'ItemsController', ['only' => ['create', 'show']]);
+    Route::post('made', 'ItemUserController@made')->name('item_user.made');
+    Route::delete('made', 'ItemUserController@dont_made')->name('item_user.dont_made');
+    Route::resource('users', 'UsersController', ['only' => ['show']]);
+});

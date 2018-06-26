@@ -20,10 +20,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Login authentication
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login')->name('login.post');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
+
+// Ranking
+Route::get('ranking/made', 'RankingController@made')->name('ranking.made');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('recipes', 'RecipesController', ['only' => ['create', 'show']]);
-    Route::post('made', 'RecipeUserController@made')->name('recipe_user.made');
-    Route::delete('made', 'RecipeUserController@dont_made')->name('recipe_user.dont_made');
+    Route::resource('items', 'ItemsController', ['only' => ['create', 'show']]);
+    Route::post('made', 'ItemUserController@made')->name('item_user.made');
+    Route::delete('made', 'ItemUserController@dont_made')->name('item_user.dont_made');
     Route::resource('users', 'UsersController', ['only' => ['show']]);
 });

@@ -2,5 +2,5 @@
 
 @section('content')
     <h1>Madeランキング</h1>
-    @include('items.items', ['items' => $items])
+    @include('recipes.recipes', ['recipes' => $recipes])
 @endsection

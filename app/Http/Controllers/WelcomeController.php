@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 
-use App\Item;
+use App\Recipe;
 
 class WelcomeController extends Controller
 {

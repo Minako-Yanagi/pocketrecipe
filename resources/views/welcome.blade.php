@@ -11,5 +11,6 @@
 @endsection
 
 @section('content')
-    テスト
+    ここにレシピとかいろいろ入るよ:D
+    
 @endsection

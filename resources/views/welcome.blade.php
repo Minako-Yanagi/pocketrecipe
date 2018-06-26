@@ -12,5 +12,8 @@
 
 @section('content')
     ここにレシピとかいろいろ入るよ:D
+    9.4
+    @include('recipes.recipes')
+    {!! $recipes->render() !!}
     
 @endsection

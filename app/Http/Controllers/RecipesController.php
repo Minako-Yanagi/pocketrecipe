@@ -15,7 +15,7 @@
             $client = new \RakutenRws_Client();
             $client->setApplicationId(env('RAKUTEN_APPLICATION_ID'));
 
-            $rws_response = $client->execute('IchibaRecipeSearch', [
+            $rws_response = $client->execute('RecipeCategoryList', [
                 'keyword' => $keyword,
                 'imageFlag' => 1,
                 'hits' => 20,

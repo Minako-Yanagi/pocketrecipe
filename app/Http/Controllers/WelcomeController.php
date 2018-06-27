@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 
-use App\Item;
+use App\Recipe;
 
 class WelcomeController extends Controller
 {
@@ -17,6 +17,9 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+         $recipes = Recipe::orderBy('updated_at', 'desc')->paginate(20);
+        return view('welcome', [
+            'recipes' => $recipes,
+        ]);
     }
 }

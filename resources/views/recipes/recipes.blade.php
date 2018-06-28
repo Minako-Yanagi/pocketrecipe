@@ -9,9 +9,9 @@
                         </div>
                         <div class="panel-body">
                             @if ($recipe->id)
-                                <p class="recipe-title"><a href="{{ route('recipes.show', $recipe->id) }}">{{ $recipe->name }}</a></p>
+                                <p class="recipe-title"><a href="{{ route('recipes.show', $recipe->id) }}">{{ $recipe->categoryName }}</a></p>
                             @else
-                                <p class="recipe-title">{{ $recipe->name }}</p>
+                                <p class="recipe-title">{{ $recipe->categoryName }}</p>
                             @endif
                             <div class="buttons text-center">
                                 @if (Auth::check())

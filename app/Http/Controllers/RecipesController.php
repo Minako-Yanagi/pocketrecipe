@@ -9,6 +9,7 @@
 
     public function create()
     {
+        print_r('test0');
    $result = request()->result;
         $recipes = [];
     if ($result) {

@@ -4,9 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Recipe extends Model
 {
-    protected $fillable = ['code', 'name', 'url', 'image_url'];
+    protected $fillable = ['id','categoryType','categoryId', 'categoryName', 'categoryUrl', 'parentCategoryId'];
 
     public function users()
     {
@@ -15,6 +16,6 @@ class Recipe extends Model
 
     public function recipe_users()
     {
-        return $this->users()->where('type', 'made');
+        return $this->users()->where('categoryType', 'made');
     }
 }

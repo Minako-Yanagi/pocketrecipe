@@ -9,36 +9,51 @@
 
     public function create()
     {
-        $keyword = request()->keyword;
+   $result = request()->keyword;
         $recipes = [];
-        if ($keyword) {
+//    if (!$result) {
             $client = new \RakutenRws_Client();
             $client->setApplicationId(env('RAKUTEN_APPLICATION_ID'));
 
-            $rws_response = $client->execute('IchibaRecipeSearch', [
-                'keyword' => $keyword,
-                'imageFlag' => 1,
-                'hits' => 20,
+
+
+            $rws_response = $client->execute('RecipeCategoryList', [
+                'categoryType' => 'large',
             ]);
-
-            // Creating "Recipe" instance to make it easy to handle.（not saving）
-            foreach ($rws_response->getData()['Recipes'] as $rws_recipe) {
+            
+     //       var_dump($rws_response->getData());
+            // Creating "Recipe" instance to make it easy to handle.（not saving
+             foreach ($rws_response->getData()['result']['large'] as $k => $rws_recipe) {
                 $recipe = new Recipe();
-                $recipe->code = $rws_recipe['Recipe']['recipeCode'];
-                $recipe->name = $rws_recipe['Recipe']['recipeName'];
-                $recipe->url = $rws_recipe['Recipe']['recipeUrl'];
-                $recipe->image_url = str_replace('?_ex=128x128', '', $rws_recipe['Recipe']['mediumImageUrls'][0]['imageUrl']);
-                $recipes[] = $recipe;
-            }
-        }
+                $recipe->categoryType = 'large';
+                $recipe->categoryId = $rws_recipe['categoryId'];
+                $recipe->categoryName = $rws_recipe['categoryName'];
+                $recipe->categoryUrl = $rws_recipe['categoryUrl'];
 
-        return view('recipes.create', [
-            'keyword' => $keyword,
+            //    print_r($recipe->categoryName);    
+            //    print_r($result);
+                if($result == null || $result == '' || mb_strpos($recipe->categoryName,$result,0,'utf-8') !== false){
+                    $recipes[] = $recipe;
+                   //$recipe->image_url = str_replace('?_ex=128x128', '', $rws_recipe['Recipe']['mediumImageUrls'][0]['imageUrl']);
+                }
+                
+            //   var_dump($recipes);
+                }
+           
+  //          }
+//   var_dump($recipes);
+
+
+return view('recipes.create', [
+            'keyword' => $result,
             'recipes' => $recipes,
         ]);
+ 
+
     }
+
     
-     public function show($id)
+    public function show($id)
     {
       $recipe = Recipe::find($id);
       $made_users = $recipe->made_users;
@@ -48,6 +63,4 @@
           'made_users' => $made_users,
       ]);
     }
-    
-    
-  }
+}

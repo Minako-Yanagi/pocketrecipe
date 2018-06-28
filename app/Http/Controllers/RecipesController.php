@@ -9,12 +9,7 @@
 
     public function create()
     {
-<<<<<<< HEAD
-        print_r('test0');
-   $result = request()->result;
-=======
    $result = request()->keyword;
->>>>>>> origin/master
         $recipes = [];
 //    if (!$result) {
             $client = new \RakutenRws_Client();

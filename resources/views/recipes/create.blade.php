@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-<?php
-
-
-=======
 @extends('layouts.app')
 
 @section('content')
@@ -21,4 +16,3 @@
 
     @include('recipes.recipes', ['recipes' => $recipes])
 @endsection
->>>>>>> origin/master

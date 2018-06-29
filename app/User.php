@@ -29,7 +29,7 @@ class User extends Authenticatable
     
     public function recipes()
     {
-        return $this->belongsToMany(recipe::class)->withPivot('type')->withTimestamps();
+        return $this->belongsToMany(Recipe::class)->withPivot('type')->withTimestamps();
     }
 
     public function made_recipes()

@@ -7,7 +7,7 @@
                         <div class="panel-heading text-center">
                             <img src="{{ $recipe->image_url }}" alt="" class="">
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body text-center">
                             @if ($recipe->categoryId)
                                 <p class="recipe-title"><a href="{{ $recipe->categoryUrl }}">{{ $recipe->categoryName }}</a></p>
                             @else

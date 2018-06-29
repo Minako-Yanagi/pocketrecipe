@@ -21,8 +21,9 @@
                 'categoryType' => 'large',
             ]);
             
-     //       var_dump($rws_response->getData());
+    //        var_dump($rws_response->getData());
             // Creating "Recipe" instance to make it easy to handle.（not saving
+    
              foreach ($rws_response->getData()['result']['large'] as $k => $rws_recipe) {
                 $recipe = new Recipe();
                 $recipe->categoryType = 'large';

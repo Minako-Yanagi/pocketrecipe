@@ -8,8 +8,8 @@
                             <img src="{{ $recipe->image_url }}" alt="" class="">
                         </div>
                         <div class="panel-body">
-                            @if ($recipe->id)
-                                <p class="recipe-title"><a href="{{ route('recipes.show', $recipe->id) }}">{{ $recipe->categoryName }}</a></p>
+                            @if ($recipe->categoryId)
+                                <p class="recipe-title"><a href="{{ $recipe->categoryUrl }}">{{ $recipe->categoryName }}</a></p>
                             @else
                                 <p class="recipe-title">{{ $recipe->categoryName }}</p>
                             @endif
@@ -25,3 +25,5 @@
         @endforeach
     </div>
 @endif
+
+

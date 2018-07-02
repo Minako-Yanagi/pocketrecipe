@@ -11,7 +11,7 @@
         <div class="status text-center">
             <ul>
                 <li>
-                    <div class="status-label">MADE</div>
+                    <div class="status-label">INTEREST</div>
                     <div id="made_count" class="status-value">
                         {{ $count_made }}
                     </div>

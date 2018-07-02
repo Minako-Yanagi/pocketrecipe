@@ -7,8 +7,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading text-center">
                     </div>
-                    <div class="panel-body">
-                        <p class="recipe-title"><a href='{{ $recipe->categoryUrl }}' target='_blank'>{{ $recipe->categoryName }}</a></p>
+                    <div class="panel-body text-center">
+                        <p class="recipe-title"><a href='{{ $recipe->categoryUrl }}' target='_blank'>{{ $recipe->categoryName }}の詳細ページ</a></p>
                         <div class="buttons text-center">
                             @if (Auth::check())
                                 @include('recipes.made_button', ['recipe' => $recipe])

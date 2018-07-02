@@ -36,7 +36,7 @@ exit;
             // remove "?_ex=128x128" because its size is defined
     //        'image_url' => str_replace('?_ex=128x128', '', $rws_recipe['mediumImageUrls'][0]['imageUrl']),
         ]);
-        \Auth::user()->made($recipe->id,'code');
+        \Auth::user()->made($recipe->id);
 
         return redirect()->back();
     }

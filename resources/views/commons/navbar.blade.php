@@ -23,7 +23,7 @@
                         <li>
                             <a href="{{ route('ranking.made') }}" >
                                 <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
-                                Madeランキング
+                                INTERESTランキング
                             </a>
                         </li>
 

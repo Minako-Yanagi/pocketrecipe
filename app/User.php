@@ -77,10 +77,4 @@ class User extends Authenticatable
         }
     }
 
-    public function is_madeing2($recipeIdOrCode)
-    {
-            $recipe_code_exists = $this->made_recipes()->where('recipe_id', $recipeIdOrCode)->exists();
-            return $recipe_code_exists;
-    }
-    
 }

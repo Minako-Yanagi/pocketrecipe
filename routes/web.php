@@ -31,6 +31,6 @@ Route::get('ranking/made', 'RankingController@made')->name('ranking.made');
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('recipes', 'RecipesController', ['only' => ['create', 'show']]);
     Route::post('made', 'RecipeUserController@made')->name('recipe_user.made');
-    Route::delete('made', 'RecipeUserController@dont_made')->name('recipe_user.dont_made');
+    Route::delete('dont_made', 'RecipeUserController@dont_made')->name('recipe_user.dont_made');
     Route::resource('users', 'UsersController', ['only' => ['show']]);
 });

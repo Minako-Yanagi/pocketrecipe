@@ -6,10 +6,9 @@
             <div class="recipe">
                 <div class="panel panel-default">
                     <div class="panel-heading text-center">
-                        <img src="{{ $recipe->image_url }}" alt="">
                     </div>
                     <div class="panel-body">
-                        <p class="recipe-title">{{ $recipe->name }}</p>
+                        <p class="recipe-title"><a href='{{ $recipe->categoryUrl }}' target='_blank'>{{ $recipe->categoryName }}</a></p>
                         <div class="buttons text-center">
                             @if (Auth::check())
                                 @include('recipes.made_button', ['recipe' => $recipe])
@@ -30,3 +29,10 @@
                         @foreach ($made_users as $user)
                             <a href="{{ route('users.show', $user->id) }}">{{ $user->name }}</a>
                         @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div>
+
+@endsection

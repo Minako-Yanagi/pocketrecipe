@@ -13,8 +13,8 @@ class Recipe extends Model
         return $this->belongsToMany(User::class)->withPivot('type')->withTimestamps();
     }
 
-    public function recipe_users()
+    public function made_users()
     {
-        return $this->users()->where('categoryType', 'made');
+        return $this->users()->where('type', 'made');
     }
 }

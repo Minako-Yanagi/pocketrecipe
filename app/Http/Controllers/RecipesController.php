@@ -9,48 +9,42 @@
 
     public function create()
     {
-   $result = request()->keyword;
+        $result = request()->keyword;
         $recipes = [];
-//    if (!$result) {
+//        if (!$result) {
             $client = new \RakutenRws_Client();
             $client->setApplicationId(env('RAKUTEN_APPLICATION_ID'));
-
-
 
             $rws_response = $client->execute('RecipeCategoryList', [
                 'categoryType' => 'large',
             ]);
             
-    //        var_dump($rws_response->getData());
             // Creating "Recipe" instance to make it easy to handle.（not saving
     
-             foreach ($rws_response->getData()['result']['large'] as $k => $rws_recipe) {
+            foreach ($rws_response->getData()['result']['large'] as $k => $rws_recipe) {
                 $recipe = new Recipe();
+                $parentCategoryId = '';
+                if($recipe->categoryType == 'small'){
+                    $parentCategoryId = $rws_recipe['parentCategoryId'];
+                }
                 $recipe->categoryType = 'large';
                 $recipe->categoryId = $rws_recipe['categoryId'];
                 $recipe->categoryName = $rws_recipe['categoryName'];
                 $recipe->categoryUrl = $rws_recipe['categoryUrl'];
-
-            //    print_r($recipe->categoryName);    
-            //    print_r($result);
+                $recipe->parentCategoryId = $parentCategoryId;
+                
                 if($result == null || $result == '' || mb_strpos($recipe->categoryName,$result,0,'utf-8') !== false){
                     $recipes[] = $recipe;
                    //$recipe->image_url = str_replace('?_ex=128x128', '', $rws_recipe['Recipe']['mediumImageUrls'][0]['imageUrl']);
                 }
                 
-            //   var_dump($recipes);
-                }
-           
-  //          }
-//   var_dump($recipes);
+            }
+//        }
 
-
-return view('recipes.create', [
+        return view('recipes.create', [
             'keyword' => $result,
             'recipes' => $recipes,
         ]);
- 
-
     }
 
     

@@ -40,7 +40,7 @@ class User extends Authenticatable
     public function made($recipeId)
     {
         // Is the user already "made"?
-        $exist = $this->is_madeing($recipeId);
+        $exist = $this->is_madeing($recipeId,'id');
 
         if ($exist) {
             // do nothing
@@ -55,7 +55,7 @@ class User extends Authenticatable
     public function dont_made($recipeId)
     {
         // Is the user already "made"?
-        $exist = $this->is_madeing($recipeId);
+        $exist = $this->is_madeing($recipeId,'id');
 
         if ($exist) {
             // remove "made"
@@ -66,15 +66,21 @@ class User extends Authenticatable
         }
     }
 
-    public function is_madeing($recipeIdOrCode)
+    public function is_madeing($recipeIdOrCode,$type)
     {
-        if (is_numeric($recipeIdOrCode)) {
-            $recipe_id_exists = $this->made_recipes()->where('recipe_id', $recipeIdOrCode)->exists();
-            return $recipe_id_exists;
-        } else {
-            $recipe_code_exists = $this->made_recipes()->where('code', $recipeIdOrCode)->exists();
+        if($type == 'id'){
+            $recipe_code_exists = $this->made_recipes()->where('recipe_id', $recipeIdOrCode)->exists();
+            return $recipe_code_exists;
+        }elseif($type == 'code'){
+            $recipe_code_exists = $this->made_recipes()->where('categoryId', $recipeIdOrCode)->exists();
             return $recipe_code_exists;
         }
+    }
+
+    public function is_madeing2($recipeIdOrCode)
+    {
+            $recipe_code_exists = $this->made_recipes()->where('recipe_id', $recipeIdOrCode)->exists();
+            return $recipe_code_exists;
     }
     
 }
